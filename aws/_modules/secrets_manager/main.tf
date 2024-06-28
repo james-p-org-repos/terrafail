@@ -13,6 +13,7 @@ resource "aws_secretsmanager_secret_rotation" "TerraFailSecretsManager_rotation"
 }
 
 resource "aws_secretsmanager_secret" "TerraFailSecretsManager_secret" {
+  # Drata: Explicitly define principals for [aws_secretsmanager_secret.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
   # Drata: Explicitly define actions for [aws_secretsmanager_secret.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
   name                    = "TerraFailSecretsManager_secret"
   description             = "TerraFailSecretsManager_secret description"
