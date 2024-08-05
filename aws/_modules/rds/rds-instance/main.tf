@@ -151,6 +151,7 @@ resource "aws_secretsmanager_secret_policy" "TerraFailDB_secret_policy" {
   secret_arn = aws_secretsmanager_secret.TerraFailDB_secret.arn
 
   policy = <<POLICY
+  # Drata: Explicitly define principals for [aws_secretsmanager_secret_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
   # Drata: Explicitly define actions for [aws_secretsmanager_secret_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
 {
   "Version": "2012-10-17",
