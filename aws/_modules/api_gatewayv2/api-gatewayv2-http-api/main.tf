@@ -192,6 +192,7 @@ resource "aws_kms_key" "TerraFailAPIv2_key" {
 # IAM
 # ---------------------------------------------------------------------
 resource "aws_iam_role" "TerraFailAPIv2_role" {
+  # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
   name = "TerraFailAPIv2_role"
   path = "/"
 
