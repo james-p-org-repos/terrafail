@@ -109,6 +109,7 @@ resource "aws_iam_role" "TerraFailIAM_role_inline" {
 
   inline_policy {
     name = "my_inline_policy"
+  # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
   # Drata: Explicitly define actions for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
 
     policy = jsonencode({
