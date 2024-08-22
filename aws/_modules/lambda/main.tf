@@ -116,6 +116,7 @@ resource "aws_vpc" "TerraFailLambda_vpc" {
 # IAM
 # ---------------------------------------------------------------------
 resource "aws_iam_role" "TerraFailLambda_role" {
+  # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
   name               = "TerraFailLambda_role"
   assume_role_policy = <<EOF
 {
