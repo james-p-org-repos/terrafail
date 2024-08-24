@@ -123,6 +123,7 @@ resource "aws_lambda_function" "TerraFailAPI_lambda_function" {
 # IAM
 # ---------------------------------------------------------------------
 resource "aws_iam_role" "TerraFailAPI_iam_role" {
+  # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
   name = "TerraFailAPI_iam_role"
 
   assume_role_policy = <<EOF
