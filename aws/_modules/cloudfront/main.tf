@@ -18,7 +18,7 @@ resource "aws_cloudfront_distribution" "TerraFailCloudfront_distribution" {
     allowed_methods        = ["HEAD", "GET"]
     cached_methods         = ["HEAD", "GET"]
     target_origin_id       = aws_s3_bucket.TerraFailCloudfront_bucket.id
-    viewer_protocol_policy = "allow-all"
+    viewer_protocol_policy = "redirect-to-https"
 
     forwarded_values {
       query_string = false
@@ -36,7 +36,7 @@ resource "aws_cloudfront_distribution" "TerraFailCloudfront_distribution" {
     custom_origin_config {
       http_port              = 80
       https_port             = 443
-      origin_protocol_policy = "http-only"
+      origin_protocol_policy = "https-only"
       origin_ssl_protocols   = ["TLSv1", "TLSv1.1"]
     }
   }
