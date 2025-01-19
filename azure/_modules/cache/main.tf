@@ -33,7 +33,7 @@ resource "azurerm_redis_cache" "TerraFailCache" {
   family                        = "P"
   sku_name                      = "Premium"
   enable_non_ssl_port           = true
-  minimum_tls_version           = "1.0"
+  minimum_tls_version           = 1.2
   public_network_access_enabled = true
 
   redis_configuration {
@@ -45,6 +45,7 @@ resource "azurerm_redis_cache" "TerraFailCache" {
 # Storage
 # ---------------------------------------------------------------------
 resource "azurerm_storage_account" "TerraFailCache_storage" {
+  # Drata: Set [azurerm_storage_account.min_tls_version] to [TLS1_2] to ensure security policies are configured using the latest secure TLS version
   name                          = "TerraFailCache_storage"
   resource_group_name           = azurerm_resource_group.TerraFailCache_rg.name
   location                      = azurerm_resource_group.TerraFailCache_rg.location
