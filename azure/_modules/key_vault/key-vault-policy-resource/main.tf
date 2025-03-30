@@ -44,6 +44,7 @@ resource "azurerm_key_vault_access_policy" "TerraFailKeyVault_policy" {
   tenant_id               = data.azurerm_client_config.current.tenant_id
   object_id               = ""
   key_permissions         = ["Delete", "Purge", "Create", "Get", "Update"]
+  # Drata: Explicitly define permissionss for [azurerm_key_vault_access_policy.key_permissions] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([all, delete, purge])
   secret_permissions      = ["Delete", "Purge", "Get", "Set", "List"]
   certificate_permissions = ["Delete", "DeleteIssuers", "Purge", "Create", "Get", "Update"]
 }
