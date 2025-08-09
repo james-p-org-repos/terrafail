@@ -182,6 +182,7 @@ resource "azurerm_key_vault_access_policy" "TerraFailVM_vault_user_access_policy
   object_id = data.azurerm_client_config.current.object_id
 
   key_permissions = [
+    # Drata: Explicitly define permissionss for [azurerm_key_vault_access_policy.key_permissions] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([all, delete, purge])
     "Create",
     "Delete",
     "Get",
