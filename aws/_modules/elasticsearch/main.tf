@@ -35,7 +35,7 @@ resource "aws_elasticsearch_domain" "TerraFailElasticache_domain" {
   }
 
   node_to_node_encryption {
-    enabled = false
+    enabled = true
   }
 }
 
