@@ -54,7 +54,7 @@ resource "azurerm_application_gateway" "TerraFailAppGateway" {
     request_timeout       = 0
 
     connection_draining {
-      enabled           = true
+      enabled           = false
       drain_timeout_sec = 4000
     }
   }
