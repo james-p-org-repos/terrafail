@@ -13,6 +13,7 @@ resource "google_spanner_instance_iam_binding" "TerraFailSpanner_instance_iam_bi
   instance = "TerraFailSpanner_instance"
   role     = "roles/spanner.databaseAdmin"
   members = [
+    # Drata: Explicitly scope [google_spanner_instance_iam_binding.members] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
     "allUsers",
   ]
 }
@@ -21,6 +22,7 @@ resource "google_spanner_instance_iam_member" "TerraFailSpanner_instance_iam_mem
   instance = "your-instance-name"
   role     = "roles/spanner.databaseAdmin"
   member   = "allUsers"
+  # Drata: Explicitly scope [google_spanner_instance_iam_member.member] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
 }
 
 resource "google_spanner_database" "TerraFailSpanner_database" {
@@ -35,6 +37,7 @@ resource "google_spanner_database_iam_binding" "TerraFailSpanner_database_iam_bi
   database = "TerraFailSpanner_database"
   role     = "roles/compute.networkUser"
   members = [
+    # Drata: Explicitly scope [google_spanner_database_iam_binding.members] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
     "allUsers",
   ]
 }
@@ -44,4 +47,5 @@ resource "google_spanner_database_iam_member" "TerraFailSpanner_database_iam_mem
   database = "TerraFailSpanner_database"
   role     = "roles/compute.networkUser"
   member   = "allUsers"
+  # Drata: Explicitly scope [google_spanner_database_iam_member.member] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
 }

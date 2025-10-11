@@ -37,8 +37,10 @@ resource "aws_lambda_function" "TerraFailLambda_function" {
 
 resource "aws_lambda_permission" "TerraFailLambda_permission" {
   action        = "*"
+  # Drata: Explicitly define actions for [aws_lambda_permission.action] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
   function_name = aws_lambda_function.TerraFailLambda_function.arn
   principal     = "*"
+  # Drata: Explicitly define principals for [aws_lambda_permission.principal] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
 }
 
 resource "aws_TerraFailLambda_layer_version_version_permission" "TerraFailTerraFailLambda_layer_version_permission" {
@@ -139,6 +141,7 @@ resource "aws_iam_role_policy" "TerraFailLambda_policy" {
   name = "TerraFailLambda_policy"
   role = aws_iam_role.TerraFailLambda_role.id
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
     Version = "2012-10-17",
     Statement = [
       {

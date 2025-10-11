@@ -7,6 +7,8 @@ resource "aws_iam_group_policy" "TerraFailIAM_group_policy" {
   name  = "TerraFailIAM_group_policy"
   group = aws_iam_group.TerraFailIAM_group.name
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_group_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
+    # Drata: Explicitly define actions for [aws_iam_group_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -43,6 +45,8 @@ resource "aws_iam_role" "TerraFailIAM_role" {
 resource "aws_iam_policy" "TerraFailIAM_policy" {
   name_prefix = "TerraFailIAM_policy"
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
+    # Drata: Explicitly define actions for [aws_iam_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -63,6 +67,7 @@ resource "aws_iam_policy_attachment" "TerraFailIAM_policy_attachment" {
 resource "aws_iam_role" "TerraFailIAM_role" {
   name = "TerraFailIAM_role"
   assume_role_policy = jsonencode({
+    # Drata: Explicitly define principals for [aws_iam_role.assume_role_policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -80,6 +85,8 @@ resource "aws_iam_role" "TerraFailIAM_role" {
 resource "aws_iam_role_policy" "TerraFailIAM_role_policy" {
   name = "TerraFailIAM_role_policy"
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
+    # Drata: Explicitly define actions for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -95,6 +102,7 @@ resource "aws_iam_role_policy" "TerraFailIAM_role_policy" {
 resource "aws_iam_role" "TerraFailIAM_role_inline" {
   name = "TerraFailIAM_role_inline"
   assume_role_policy = jsonencode({
+    # Drata: Explicitly define principals for [aws_iam_role.assume_role_policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -111,6 +119,8 @@ resource "aws_iam_role" "TerraFailIAM_role_inline" {
     name = "my_inline_policy"
 
     policy = jsonencode({
+      # Drata: Explicitly define resources for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
+      # Drata: Explicitly define actions for [aws_iam_role.inline_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
       Version = "2012-10-17"
       Statement = [
         {
@@ -126,6 +136,7 @@ resource "aws_iam_role" "TerraFailIAM_role_inline" {
 resource "aws_iam_role" "TerraFailIAM_role_managed" {
   name = "TerraFailIAM_role_managed"
   assume_role_policy = jsonencode({
+    # Drata: Explicitly define principals for [aws_iam_role.assume_role_policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -139,11 +150,13 @@ resource "aws_iam_role" "TerraFailIAM_role_managed" {
   })
 
   managed_policy_arns = ["arn:aws:iam::aws:policy/AdministratorAccess"]
+  # Drata: Ensure that [aws_iam_role.managed_policy_arns] does not contain arn:aws:iam::aws:policy/AdministratorAccess
 }
 
 resource "aws_iam_role" "TerraFailIAM_role_custom" {
   name = "TerraFailIAM_role_custom"
   assume_role_policy = jsonencode({
+    # Drata: Explicitly define principals for [aws_iam_role.assume_role_policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -162,6 +175,8 @@ resource "aws_iam_role" "TerraFailIAM_role_custom" {
 resource "aws_iam_policy" "TerraFailIAM_role_policy_custom" {
   name_prefix = "TerraFailIAM_role_policy_custom"
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*])
+    # Drata: Explicitly define actions for [aws_iam_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*)
     Version = "2012-10-17"
     Statement = [
       {
@@ -182,6 +197,8 @@ resource "aws_iam_user_policy" "TerraFailIAM_user_policy" {
   name = "TerraFailIAM_user_policyy"
   user = aws_iam_user.TerraFailIAM_user.name
   policy = jsonencode({
+    # Drata: Explicitly define resources for [aws_iam_user_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([*]). It is recommended to use group policies over user policies when possible.
+    # Drata: Explicitly define actions for [aws_iam_user_policy.policy] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (*). It is recommended to use group policies over user policies when possible.
     Version = "2012-10-17"
     Statement = [
       {
