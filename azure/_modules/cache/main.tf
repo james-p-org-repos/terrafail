@@ -32,7 +32,7 @@ resource "azurerm_redis_cache" "TerraFailCache" {
   capacity                      = 1
   family                        = "P"
   sku_name                      = "Premium"
-  enable_non_ssl_port           = true
+  enable_non_ssl_port           = false
   minimum_tls_version           = "1.0"
   public_network_access_enabled = true
 
@@ -45,6 +45,7 @@ resource "azurerm_redis_cache" "TerraFailCache" {
 # Storage
 # ---------------------------------------------------------------------
 resource "azurerm_storage_account" "TerraFailCache_storage" {
+  # Drata: Set [azurerm_storage_account.enable_https_traffic_only] to [true] to ensure secure protocols are being used to encrypt resource traffic
   name                          = "TerraFailCache_storage"
   resource_group_name           = azurerm_resource_group.TerraFailCache_rg.name
   location                      = azurerm_resource_group.TerraFailCache_rg.location

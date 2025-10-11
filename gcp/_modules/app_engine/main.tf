@@ -24,11 +24,11 @@ resource "google_app_engine_flexible_app_version" "TerraFailAppEngine_version_fl
     path = "/"
   }
   api_config {
-    security_level = "SECURE_DEFAULT"
+    security_level = "SECURE_ALWAYS"
     script         = "path/to/script.py"
   }
   handlers {
-    security_level = "SECURE_DEFAULT"
+    security_level = "SECURE_ALWAYS"
   }
 }
 
@@ -41,7 +41,7 @@ resource "google_app_engine_standard_app_version" "TerraFailAppEngine_version_st
     shell = "python ./app.py"
   }
   handlers {
-    security_level = "SECURE_DEFAULT"
+    security_level = "SECURE_ALWAYS"
   }
   deployment {
     zip {
