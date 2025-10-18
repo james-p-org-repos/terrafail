@@ -27,6 +27,7 @@ resource "google_pubsub_topic_iam_binding" "TerraFailPubsub_iam_binding" {
   topic   = google_pubsub_topic.TerraFailPubsub.name
   role    = "roles/viewer"
   members = [
+    # Drata: Explicitly scope [google_pubsub_topic_iam_binding.members] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
     "allUsers",
   ]
 }
@@ -36,11 +37,13 @@ resource "google_pubsub_topic_iam_member" "TerraFailPubsub_iam_member" {
   topic   = google_pubsub_topic.TerraFailPubsub.name
   role    = "roles/viewer"
   member  = "allUsers"
+  # Drata: Explicitly scope [google_pubsub_topic_iam_member.member] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
 }
 
 resource "google_pubsub_subscription_iam_binding" "TerraFailPubsub_sub_iam_binding" {
   subscription = "TerraFailPubsub_subscription"
   role         = "roles/editor"
+  # Drata: Explicitly scope [google_pubsub_subscription_iam_binding.role] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (['roles/pubsub.editor', 'roles/editor', 'roles/pubsub.admin'])
   members = [
     "allUsers",
   ]
@@ -49,5 +52,6 @@ resource "google_pubsub_subscription_iam_binding" "TerraFailPubsub_sub_iam_bindi
 resource "google_pubsub_subscription_iam_member" "TerraFailPubsub_sub_iam_member" {
   subscription = "TerraFailPubsub_subscription"
   role         = "roles/editor"
+  # Drata: Explicitly scope [google_pubsub_subscription_iam_member.role] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as (['roles/pubsub.editor', 'roles/editor', 'roles/pubsub.admin'])
   member       = "allUsers"
 }

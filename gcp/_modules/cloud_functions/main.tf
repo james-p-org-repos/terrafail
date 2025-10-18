@@ -18,6 +18,7 @@ resource "google_cloudfunctions_function_iam_binding" "TerraFailCloudFunctions_i
   cloud_function = google_cloudfunctions_function.TerraFailCloudFunctions.name
   role           = "roles/viewer"
   members = [
+    # Drata: Explicitly scope [google_cloudfunctions_function_iam_binding.members] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
     "allUsers",
   ]
 }
@@ -28,4 +29,5 @@ resource "google_cloudfunctions_function_iam_member" "TerraFailCloudFunctions_ia
   cloud_function = google_cloudfunctions_function.TerraFailCloudFunctions.name
   role           = "roles/viewer"
   member         = "allUsers"
+  # Drata: Explicitly scope [google_cloudfunctions_function_iam_member.member] in adherence with the principal of least privilege. Avoid the use of overly permissive allow-all access patterns such as ([allusers, allauthenticatedusers])
 }
