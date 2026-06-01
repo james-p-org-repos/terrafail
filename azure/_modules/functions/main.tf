@@ -23,7 +23,7 @@ resource "azurerm_linux_function_app" "TerraFailFunction_linux" {
     cors {
       allowed_origins = ["*"]
     }
-    minimum_tls_version      = "1.0"
+    minimum_tls_version      = 1.2
     remote_debugging_enabled = true
 
     ip_restriction {
@@ -47,7 +47,7 @@ resource "azurerm_windows_function_app" "TerraFailFunction_windows" {
     cors {
       allowed_origins = ["*"]
     }
-    minimum_tls_version      = "1.0"
+    minimum_tls_version      = 1.2
     remote_debugging_enabled = true
 
     ip_restriction {
@@ -69,6 +69,7 @@ resource "azurerm_service_plan" "TerraFailFunction_service_plan" {
 }
 
 resource "azurerm_storage_account" "TerraFailFunction_storage_linux" {
+  # Drata: Set [azurerm_storage_account.min_tls_version] to [TLS1_2] to ensure security policies are configured using the latest secure TLS version
   name                     = "TerraFailFunction_storage_linux"
   resource_group_name      = azurerm_resource_group.TerraFailFunction_rg.name
   location                 = azurerm_resource_group.TerraFailFunction_rg.location
@@ -81,6 +82,7 @@ resource "azurerm_storage_account" "TerraFailFunction_storage_linux" {
   }
 }
 resource "azurerm_storage_account" "TerraFailFunction_storage_windows" {
+  # Drata: Set [azurerm_storage_account.min_tls_version] to [TLS1_2] to ensure security policies are configured using the latest secure TLS version
   name                     = "TerraFailFunction_storage_windows"
   resource_group_name      = azurerm_resource_group.TerraFailFunction_rg.name
   location                 = azurerm_resource_group.TerraFailFunction_rg.location
